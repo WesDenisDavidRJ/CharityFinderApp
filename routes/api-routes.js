@@ -18,11 +18,20 @@ app.get("/api/register", function(req, res) {
 app.post("/api/register", function(req, res) {
     console.log(req.body);
     client.messages.create({
-     body: 'Hello from Charity App',
+     body: 'Hello from David',
      to: '+1'+req.body.phoneNumber,  // Text this number
      from: '+19197525090' // From a valid Twilio number
+    }, function(err, message){
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(message.sid)
+        }
+        
+    });
 })
-.then((message) => console.log(message.sid, message.to))
-})
+// })
+// .then((message) => console.log(message.sid, message.to))
+// })
 
 }
